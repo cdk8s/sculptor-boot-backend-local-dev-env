@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.cdk8s.sculptor</groupId>
-	<artifactId>sculptor-boot-backend-dev-test</artifactId>
+	<artifactId>sculptor-boot-backend-local-dev-env</artifactId>
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
