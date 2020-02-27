@@ -1,0 +1,82 @@
+
+#=================================================================================
+# 容器相关设置
+server:
+  port: ${SERVER_PORT:9091}
+  servlet:
+    context-path: /sculptor-boot-backend
+  tomcat:
+    max-connections: 10000
+    max-threads: 200
+    min-spare-threads: 200
+
+
+
+debug: true
+logging:
+  config: classpath:logback/logback-dev.xml
+#=================================================================================
+# spring 组件相关设置
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    platform: mysql
+    sql-script-encoding: utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql.cdk8s.com:3306/cdk8s_sculptor_boot?useSSL=false&autoReconnect=true&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&character_set_client=utf8mb4&character_set_connection=utf8mb4&character_set_database=utf8mb4&character_set_results=utf8mb4&character_set_server=utf8mb4&character_set_system=utf8&character_set_filesystem=binary&collation_connection=utf8mb4_unicode_520_ci&collation_database=utf8mb4_unicode_520_ci&collation_server=utf8mb4_unicode_520_ci
+    username: ${SPRING_MYSQL_USERNAME:root}
+    password: ${SPRING_MYSQL_PASSWORD:123456}
+    druid:
+      filters: stat
+      web-stat-filter:
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+      stat-view-servlet:
+        # 默认true 内置监控页面首页/druid/index.html
+        enabled: true
+        url-pattern: /druid/*
+        # 允许清空统计数据
+        reset-enable: true
+        login-username: admin
+        login-password: 123456
+        # IP白名单 多个逗号分隔
+        allow:
+        # IP黑名单
+        deny:
+  redis:
+    database: ${SPRING_REDIS_DATABASE:1}
+    port: ${SPRING_REDIS_PORT:6379}
+    host: ${SPRING_REDIS_HOST:redis.cdk8s.com}
+    password: ${SPRING_REDIS_PASSWORD:123456}
+    timeout: 10000ms
+    lettuce:
+      pool:
+        max-active: -1
+        max-idle: -1
+        min-idle: 200
+        max-wait: 2000ms
+
+
+
+# actuator
+management:
+  server:
+    port: ${MANAGEMENT_SERVER_PORT:19091}
+
+#=================================================================================
+# 其他辅助框架相关配置
+
+#=================================================================================
+# 自定义参数相关配置
+
+
+
+#=================================================================================
