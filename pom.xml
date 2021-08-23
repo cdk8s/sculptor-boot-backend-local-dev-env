@@ -56,7 +56,7 @@
 		<mapstruct.version>1.3.0.Final</mapstruct.version>
 		<easy-captcha.version>1.6.2</easy-captcha.version>
 		<ip2region.version>1.7.2</ip2region.version>
-		<jsoup.version>1.12.1</jsoup.version>
+		<jsoup.version>1.14.2</jsoup.version>
 		<upyun-java-sdk.version>4.1.4</upyun-java-sdk.version>
 		<xxl-job.version>2.1.2</xxl-job.version>
 		<redisson-spring-boot-starter.version>3.11.5</redisson-spring-boot-starter.version>
